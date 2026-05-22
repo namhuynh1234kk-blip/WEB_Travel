@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TTC Travel • Du Lịch Đẳng Cấp</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    .hero-bg {
+      background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.5)), 
+                        url('https://source.unsplash.com/random/1920x1080/?luxury-travel');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .tour-card, .video-card {
+      transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    .tour-card:hover, .video-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+    }
+
+    .nav-link {
+      position: relative;
+    }
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background-color: #0f766e;
+      transition: all 0.4s ease;
+    }
+    .nav-link:hover:after { width: 100%; }
+  </style>
+</head>
+<body class="bg-zinc-50 text-zinc-900">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 w-full bg-white/90 backdrop-blur-lg z-50 border-b">
+    <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <i class="fa-solid fa-plane text-4xl text-teal-700"></i>
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">TTC TRAVEL</h1>
+          <p class="text-xs text-zinc-500 -mt-1">LUXURY JOURNEYS</p>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="#" class="nav-link hover:text-teal-700">Tour Quốc Tế</a>
+        <a href="#" class="nav-link hover:text-teal-700">Châu Âu</a>
+        <a href="#" class="nav-link hover:text-teal-700">Châu Á</a>
+        <a href="#" class="nav-link hover:text-teal-700">Nội Địa</a>
+        <a href="#" class="nav-link hover:text-teal-700">Ưu Đãi</a>
+      </nav>
+
+     <div class="flex items-center gap-4">
+
+  <!-- SEARCH -->
+  <input type="text" 
+         class="bg-zinc-100 border border-transparent focus:border-teal-600 rounded-full py-3 px-6 w-80 focus:outline-none text-sm"
+         placeholder="Bạn muốn đi đâu mùa này?">
+
+  <button class="bg-teal-700 text-white px-7 py-3 rounded-full hover:bg-teal-800 transition flex items-center gap-2">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+
+  <!-- AUTH BUTTONS -->
+  <button onclick="goLogin()" 
+          class="text-sm font-medium text-teal-700 hover:underline">
+    Login
+  </button>
+
+  <button onclick="goRegister()" 
+          class="text-sm font-medium text-zinc-700 hover:underline">
+    Register
+  </button>
+
+</div>
+      <!-- <button onclick="goLogin()" 
+    class="text-sm font-medium text-teal-700 hover:underline">
+    Login
+</button>
+
+<button onclick="goRegister()" 
+    class="text-sm font-medium text-zinc-700 hover:underline">
+    Register
+</button> -->
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-bg h-screen flex items-center text-white">
+    <div class="max-w-5xl mx-auto px-8 text-center">
+      <p class="uppercase tracking-widest text-teal-300 mb-4">Experiences That Matter</p>
+      <h1 class="text-6xl md:text-7xl font-bold leading-tight mb-6">
+        Hành trình đẳng cấp<br>cho những người biết hưởng thụ
+      </h1>
+      <p class="text-xl max-w-xl mx-auto mb-10">
+        Khám phá thế giới theo cách riêng biệt • Dịch vụ 5 sao • Kỷ niệm khó quên
+      </p>
+      <button onclick="document.getElementById('tours').scrollIntoView({behavior:'smooth'})" 
+              class="bg-white text-zinc-900 font-semibold px-10 py-5 rounded-full text-lg hover:bg-teal-50 transition">
+        Khám phá ngay
+      </button>
+    </div>
+  </section>
+
+  <!-- TOURS -->
+  <section id="tours" class="py-24">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="flex justify-between items-end mb-12">
+        <div>
+          <h2 class="text-5xl font-bold">Tour Đang Hot</h2>
+          <p class="text-zinc-600 mt-2">Những hành trình được yêu thích nhất mùa này</p>
+        </div>
+        <a href="#" class="text-teal-700 hover:underline">Xem tất cả →</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tour-grid"></div>
+    </div>
+  </section>
+
+  <!-- KHÁM PHÁ CÙNG KHÁCH HÀNG -->
+  <section class="py-24 bg-zinc-900 text-white">
+    <div class="max-w-7xl mx-auto px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl font-bold mb-4">Khám Phá Cùng Khách Hàng</h2>
+        <p class="text-teal-400 text-xl">Những khoảnh khắc thật từ khách TTC Travel</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="video-grid"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-zinc-950 text-zinc-400">
+    <div class="max-w-7xl mx-auto px-8 pt-16 pb-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <i class="fa-solid fa-plane text-4xl text-teal-500"></i>
+            <h1 class="text-3xl font-bold text-white">TTC TRAVEL</h1>
+          </div>
+          <p class="text-zinc-500 leading-relaxed">
+            Công ty du lịch cao cấp hàng đầu Việt Nam.<br>
+            Mang đến những hành trình đẳng cấp và trải nghiệm đáng nhớ.
+          </p>
+          <div class="flex gap-5 mt-8">
+            <a href="#" class="hover:text-teal-400 text-2xl"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#" class="hover:text-teal-400 text-2xl"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="hover:text-teal-400 text-2xl"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="hover:text-teal-400 text-2xl"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold mb-5">Khám Phá</h3>
+          <ul class="space-y-3">
+            <li><a href="#" class="hover:text-teal-400">Tour Quốc Tế</a></li>
+            <li><a href="#" class="hover:text-teal-400">Tour Châu Âu</a></li>
+            <li><a href="#" class="hover:text-teal-400">Tour Châu Á</a></li>
+            <li><a href="#" class="hover:text-teal-400">Tour Nội Địa</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold mb-5">Liên Hệ</h3>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-teal-500 mt-1"></i>
+              <span>123 Nguyễn Tất Thành, Quận Ninh Kiều<br>TP. Cần Thơ</span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-phone text-teal-500"></i>
+              <span>Hotline: <a href="tel:19001234" class="hover:text-teal-400">1900 1234</a></span>
+            </li>
+            <li class="flex items-center gap-3">
+              <i class="fa-solid fa-envelope text-teal-500"></i>
+              <span><a href="mailto:info@ttctravel.vn" class="hover:text-teal-400">info@ttctravel.vn</a></span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold mb-5">Giờ Làm Việc</h3>
+          <ul class="space-y-3">
+            <li>Thứ 2 - Thứ 6: <span class="text-white">8:00 - 17:30</span></li>
+            <li>Thứ 7: <span class="text-white">8:00 - 12:00</span></li>
+            <li>Chủ Nhật: <span class="text-amber-400">Nghỉ</span></li>
+          </ul>
+          <p class="text-xs text-zinc-500 mt-10">© 2026 TTC Travel. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+<script>
+function goLogin() {
+    window.location.href = "./pages/login.html";
+}
+
+function goRegister() {
+    window.location.href = "./pages/register.html";
+}
+</script>
+<script src="./js/tours.js"></script>
+
+</body>
+</html>

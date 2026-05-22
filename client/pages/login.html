@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Đăng nhập</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white p-10 rounded-3xl shadow-xl w-full max-w-md">
+
+        <h1 class="text-4xl font-bold mb-8 text-center">
+            Đăng nhập
+        </h1>
+
+        <form id="login-form" class="space-y-5">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                class="w-full border rounded-2xl px-5 py-4 outline-none">
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Mật khẩu"
+                class="w-full border rounded-2xl px-5 py-4 outline-none">
+
+            <button
+                class="w-full bg-teal-700 text-white py-4 rounded-2xl">
+                Đăng nhập
+            </button>
+            <div><h3> Bạn chưa có  tài khoản ? <button onclick="goRegister()" 
+         class="text-teal-700 font-semibold">
+    Đăng ký 
+  </button></h3>
+             </div>
+        </form>
+
+    </div>
+    <script>
+function goRegister() {
+    window.location.href = "register.html";
+}
+</script>
+
+    <script src="../js/login.js"></script>
+
+</body>
+
+</html>

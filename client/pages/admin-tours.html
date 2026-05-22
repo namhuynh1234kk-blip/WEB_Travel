@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Quản lý tour</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-100">
+
+    <div class="max-w-7xl mx-auto py-20 px-8">
+
+        <div class="flex items-center justify-between mb-10">
+
+            <h1 class="text-5xl font-bold">
+                Quản lý Tour
+            </h1>
+
+            <button
+                onclick="openCreateModal()"
+                class="bg-teal-700 text-white px-6 py-4 rounded-2xl">
+
+                + Thêm tour
+
+            </button>
+
+        </div>
+
+        <div
+            id="tour-list"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        </div>
+
+    </div>
+
+    <!-- MODAL -->
+    <div
+        id="tour-modal"
+        class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+
+        <div class="bg-white rounded-3xl p-8 w-full max-w-2xl">
+
+            <div class="flex justify-between mb-8">
+
+                <h2 class="text-3xl font-bold">
+                    Tour
+                </h2>
+
+                <button onclick="closeModal()">
+                    ✕
+                </button>
+
+            </div>
+
+            <form id="tour-form" class="space-y-4">
+
+                <input
+                    type="text"
+                    id="title"
+                    placeholder="Tên tour"
+                    class="w-full border rounded-2xl px-5 py-4">
+
+                <input
+                    type="text"
+                    id="subtitle"
+                    placeholder="Subtitle"
+                    class="w-full border rounded-2xl px-5 py-4">
+
+                <textarea
+                    id="description"
+                    placeholder="Mô tả"
+                    class="w-full border rounded-2xl px-5 py-4 h-32"></textarea>
+
+                <input
+                    type="text"
+                    id="country"
+                    placeholder="Quốc gia"
+                    class="w-full border rounded-2xl px-5 py-4">
+
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Giá"
+                    class="w-full border rounded-2xl px-5 py-4">
+
+                <input
+                    type="text"
+                    id="image"
+                    placeholder="Link ảnh"
+                    class="w-full border rounded-2xl px-5 py-4">
+
+                <input
+                    type="text"
+                    id="date"
+                    placeholder="Ngày khởi hành"
+                    class="w-full border rounded-2xl px-5 py-4">
+
+                <button
+                    class="w-full bg-teal-700 text-white py-4 rounded-2xl">
+
+                    Lưu Tour
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="../js/admin-tours.js"></script>
+
+</body>
+
+</html>
